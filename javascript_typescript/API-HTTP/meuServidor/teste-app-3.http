@@ -1,0 +1,33 @@
+GET http://localhost:3333/livros
+
+###
+
+GET http://localhost:3333/livros/1
+
+###
+
+POST http://localhost:3333/livros
+Content-Type: application/json
+
+{
+    "titulo": "novo livro",
+    "autor": "novo autor"
+}
+
+
+###
+
+PUT http://localhost:3333/livros/3
+Content-Type: application/json
+
+{
+    "titulo": "livro atualizado",
+    "autor": "autor atualizado"
+}
+
+###
+DELETE http://localhost:3333/livros/3
+
+###
+
+

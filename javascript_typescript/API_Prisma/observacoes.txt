@@ -1,0 +1,54 @@
+1- Primeiro crie uma pasta: mkdir API_Prisma
+
+2- Depois entre na pasta: cd <my-project>
+
+3- npm init -y
+
+4- npm install express
+
+5- npm i nodemon (nodemon detecta automaticamente os arquivos alterados e reinicia a aplicação)
+
+6- Adicione esse script ao package.json:
+"scripts": {
+  "dev": "nodemon --watch src/ --exec \"node src/app.js\"",
+},
+
+7. Instale o Prisma (Para começar a usar o Prisma Client, você precisa instalar o prisma):
+npm install --save-dev prisma
+npm install @prisma/client
+
+8. Inicialize o Prisma (Isso cria um novo diretório prisma com um arquivo de esquema schema.prisma):
+npx prisma init
+
+9. Para fazer com que todas tabelas existentes no banco (definido no .env) sejam mapeadas no schema.prisma, usa-se o comando:
+npx prisma db pull
+
+10. Pode-se criar as tabelas e relaciomentos diretamente no schema.prisma e em seguida migrar para o banco de dados.Apos criar as tabelas ou realizar alterações nas tabelas atraves do schema.prisma, para migrar as alterações para o banco de dados deve-se usar o comando:
+npx prisma migrate dev --name nomeDaAlteracao
+npx prisma db push
+
+11. npm i dotenv
+
+12. npm i cors
+
+13. npm i jsonwebtoken
+
+14. npm install bcryptjs
+
+==> APENAS PARA TYPESCRIPT:
+npm install typescript --save-dev
+npm install @types/node --save-dev
+npm install --save-dev @types/express
+npm i ts-node nodemon -D
+
+-> O próximo passo é criar o arquivo tsconfig.json, onde definimos as opções do compilador TypeScript. Podemos criar um tsconfig com vários conjuntos de opções, conforme o comando abaixo:
+npx tsc --init --rootDir src --outDir build \
+--esModuleInterop --resolveJsonModule --lib es6 \
+--module commonjs --allowJs true --noImplicitAny true
+
+-> Adicione esse script ao package.json:
+"scripts": {
+  "dev": "nodemon --watch 'src/' --exec 'ts-node src/app.ts' -e ts",
+},
+
+

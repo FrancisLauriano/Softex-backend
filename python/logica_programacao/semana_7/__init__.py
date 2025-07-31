@@ -1,0 +1,3 @@
+import funcoes
+
+funcoes.divisao()

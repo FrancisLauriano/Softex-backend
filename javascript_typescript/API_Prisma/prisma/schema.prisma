@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model anuncios {
+  id                      Int          @id @default(autoincrement())
+  data_criacao            DateTime?    @default(now()) @db.Timestamp(6)
+  data_conclusao          DateTime?    @db.Timestamp(6)
+  ativo                   Boolean      @default(true)
+  titulo                  String       @db.VarChar(255)
+  titulo_livro_oferecido  String       @db.VarChar(255)
+  autor_livro_oferecido   String       @db.VarChar(255)
+  genero_livro_oferecido  String       @db.VarChar(100)
+  titulo_livro_solicitado String       @db.VarChar(255)
+  autor_livro_solicitado  String       @db.VarChar(255)
+  genero_livro_solicidado String       @db.VarChar(100)
+  descricao               String?
+  anunciante_id           Int
+  usuarios                usuarios     @relation(fields: [anunciante_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  avaliacoes              avaliacoes[]
+  mensagens               mensagens[]
+}
+
+model avaliacoes {
+  id                   Int       @id @default(autoincrement())
+  nota                 Int
+  comentario           String?
+  data_avaliacao       DateTime? @default(now()) @db.Timestamp(6)
+  qtd_like             Int?      @default(0)
+  usuario_avaliador_id Int
+  anuncio_id           Int
+  anuncios             anuncios  @relation(fields: [anuncio_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios             usuarios  @relation(fields: [usuario_avaliador_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model enderecos {
+  id          Int        @id @default(autoincrement())
+  logradouro  String     @db.VarChar(255)
+  numero      String?    @db.VarChar(45)
+  bairro      String?    @db.VarChar(255)
+  complemento String?    @db.VarChar(255)
+  cep         String     @db.Char(8)
+  municipio   String     @db.VarChar(255)
+  uf          String     @db.Char(2)
+  usuarios    usuarios[]
+}
+
+model mensagens {
+  id                                                   Int       @id @default(autoincrement())
+  texto                                                String
+  data_envio                                           DateTime? @default(now()) @db.Timestamp(6)
+  lido                                                 Boolean?  @default(false)
+  usuario_remetente_id                                 Int
+  usuario_destinatario_id                              Int
+  anuncio_id                                           Int
+  anuncios                                             anuncios  @relation(fields: [anuncio_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios_mensagens_usuario_destinatario_idTousuarios usuarios  @relation("mensagens_usuario_destinatario_idTousuarios", fields: [usuario_destinatario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios_mensagens_usuario_remetente_idTousuarios    usuarios  @relation("mensagens_usuario_remetente_idTousuarios", fields: [usuario_remetente_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model telefones {
+  id         Int      @id @default(autoincrement())
+  contato    String   @db.VarChar(45)
+  usuario_id Int
+  usuarios   usuarios @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model usuarios {
+  id                                                    Int          @id @default(autoincrement())
+  nome                                                  String       @db.VarChar(255)
+  email                                                 String       @unique @db.VarChar(255)
+  senha                                                 String       @db.VarChar(255)
+  data_cadastro                                         DateTime?    @default(now()) @db.Timestamp(6)
+  endereco_id                                           Int?
+  anuncios                                              anuncios[]
+  avaliacoes                                            avaliacoes[]
+  mensagens_mensagens_usuario_destinatario_idTousuarios mensagens[]  @relation("mensagens_usuario_destinatario_idTousuarios")
+  mensagens_mensagens_usuario_remetente_idTousuarios    mensagens[]  @relation("mensagens_usuario_remetente_idTousuarios")
+  telefones                                             telefones[]
+  enderecos                                             enderecos?   @relation(fields: [endereco_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}

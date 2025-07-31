@@ -1,0 +1,35 @@
+### Localizar todos usuarios
+GET http://localhost:3333/usuarios
+
+
+####
+#### Localizar usuario por id
+GET http://localhost:3333/usuarios/1
+
+
+####
+#### Adicionar novo usuario
+POST http://localhost:3333/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Cleide Lauriano"
+}
+
+
+####
+#### Alterar dado do usuario
+PUT http://localhost:3333/usuarios/2
+Content-Type: application/json
+
+{
+    "nome": "Francisco Augusto"
+}
+
+
+####
+#### Deletar usuario
+DELETE http://localhost:3333/usuarios/2
+
+
+###

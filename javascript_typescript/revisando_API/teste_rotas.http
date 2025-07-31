@@ -1,0 +1,35 @@
+GET http://localhost:3000
+
+###
+
+GET http://localhost:8000/livros
+
+###
+
+GET http://localhost:8000/livros/2
+
+###
+
+POST http://localhost:8000/livros
+Content-Type: application/json
+
+{
+"titulo": "novo titulo",
+"autor": "novo autor"
+}
+
+###
+
+PUT http://localhost:3000/livros/3
+Content-Type: application/json
+
+{
+    "titulo": "novo titulo atualizado",
+    "autor": "novo autor atualizado"
+}
+
+###
+
+DELETE http://localhost:3000/livros/3
+
+###

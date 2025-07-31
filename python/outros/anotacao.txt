@@ -1,0 +1,113 @@
+---> print('Prazer em te conhecer {:10}!'.format(nome)) 
+Vai printar: Prazer em te conhecer, nome          !
+---> print('Prazer em te conhecer {:>10}!'.format(nome))
+Vai printar: Prazer em te conhecer,           nome!
+---> print('Prazer em te conhecer {:<10}!'.format(nome))
+Vai printar: Prazer em te conhecer, nome          !
+---> print('Prazer em te conhecer, {:^10}'.format(nome)) 
+Vai printar: Prazer em te conhecer,      nome     ! 
+---> print('Prazer em te conhecer, {:=^10}!'.format(nome)) 
+Vai printar: Prazer em te conhecer, =====nome=====! 
+
+
+1. Potencia: ** ou pow()
+
+2. Raiz quadrada: Pontencia do número por 1/2: 
+Exemplo --> 81**(1/2)
+
+3. Divisão Inteira: //
+
+4. Resto da Divisão: %
+
+5.  Arredondar um número para um determinado número de casas decimais: round()
+
+6. Definir quantas casas terá apos a virgula a ser printato na tela: 
+Exemplo --> print('Resultado: {:.2f}'.format(mediaFinal))   
+
+7. Difinir quantidades de casas que serão printado. Caso necessário, essa formatação irá preencher casas a esquerda: 
+Exemplo --> {:2f}.format(mediaFinal)
+
+8. Duas linhas de print na mesma linha: , end=' '
+Exemplo:
+print('A média de {}'.format(nome), end=' ')
+print('foi: {:.2f}'.format(nota))
+OBS: Será printado -> A média de fulano foi 10.00
+
+9. Quebra de linha: \n
+
+10. Biblioteca math:
+- sin(): Calcular seno
+- cos(): Calcular cosseno
+- tan(): Calcular tangente
+- ceil(): Arredondar para cima
+- floor(): Arredondar para baixo
+- trunc(): Truncar o número, ou seja, vai eliminar a parte depois da virgula sem arredondar. Deixa só a parte inteira
+- pow(): Potencia
+- sqrt(): Calcular a raiz quadrada
+- factorial(): Calcular factorial
+
+11. Biblioteca random:
+- randint(start, stop): Retorna um número inteiro aleatório
+- randrange(start, stop, step): Retorna um número aleatório existente entre um determinado intervalo
+- choice(): Retorna um elemento aleatório que pertença a uma sequência, que pode ser uma variável do tipo string, uma lista, uma tupla ou uma sequência numérica
+- shuffle(): Retorna o resultado de uma lista ou de uma tupla de forma embaralhada.
+
+12. Biblioteca time:
+- sleep(): Suspende a execução do programa pelo número de segundos informado em seu parâmetro. No entanto, se você precisar de ser mais preciso, você pode informar o valor de segundos utilizando um número de ponto flutuante.
+
+13. Instalar bibliotecas externas: pip install nomeDaBiblioteca
+
+14. Fatiamento de string:
+Exemplo --> 
+frase = 'Francis Lauriano'
+print(frase[0]) --> F
+print(frase[8:16]) --> Lauriano
+print(frase[8:16:2]) --> Luin
+print(frase[:7]) --> Francis
+print(frase[8:]) --> Lauriano
+print(frase[7::2]) -->  arao
+
+15. Comprimento string: len()
+
+16. Contar quantas vezes aparece um caracter numa string: count()
+
+17. Contar quantas vezes aparece um caracter numa string num intervalo: count()
+Exemplo --> frase.count('a', 0, 6)
+
+18. Mostrar quando aparece uma sequencia de caracteres numa string(mostra o inicio da ocorrencia): find(). OBS: Se retornar -1, significa que não existe esses caracteres na string
+
+19. Mostrar se existe uma sequencia de caracteres numa string: in. Irá retornar True ou False
+Exemplo --> print('Fran' in frase)
+
+20. Substituir caracters por outros naquela instancia: replace()
+Exemplo: frase.replace('Lauriano', 'Silva')
+OBS: Para realmente substituir deverá ser feito a atribuição.
+Exemplo: frase = frase.replace('Lauriano', 'Silva')
+
+21. Colocar os caracteres em maiusculo: upper()
+
+22. Colocar os caracteres em minusculo: lower()
+
+23. Colocar toda a string em minusculo e colocar apenas o primeiro caracter em maisculo: capitalize()
+
+24. Colocar em maisculos o primeiro caracter de todas as palavras da string: title()
+
+25. Remover os espaços vazios no inicio e no fim da string: strip()
+
+26. Remover apenas os espaços vazios a direita (fim da string): rstrip()
+
+27. Remover apenas os espaços vazios a esquerda (inicio da string): lstrip()
+
+28. Dividir a string aonde tiver espaço: split()
+
+29. Junção de strings de uma lista: join()
+
+30. Biblioteca datetime:
+- date: pegar a data atual através da classe date, basta a importar e chamar o método today()
+exemplo:
+from datetime import date
+data_atual = date.today()
+print(data_atual)
+
+31. 
+
